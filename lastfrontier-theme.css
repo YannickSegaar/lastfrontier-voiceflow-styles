@@ -1,8 +1,7 @@
 /**
  * Last Frontier Heliskiing - Voiceflow Custom Theme
  *
- * This stylesheet customizes the Voiceflow chat widget to match
- * the Last Frontier brand identity.
+ * IMPORTANT: All rules use !important to override Voiceflow's CSS-in-JS defaults
  *
  * Reference: https://github.com/voiceflow/react-chat
  * Docs: https://docs.voiceflow.com/docs/advanced-styling
@@ -33,113 +32,155 @@
    ========================================================================== */
 
 :root {
-  /* Brand Colors - Official Last Frontier palette */
-  --lf-red: #cc3333;           /* Pantone 485 */
-  --lf-red-hover: #b32d2d;     /* Darker shade for hover states */
+  --lf-red: #cc3333;
+  --lf-red-hover: #b32d2d;
   --lf-black: #000000;
   --lf-white: #FFFFFF;
   --lf-light-gray: #F5F5F5;
   --lf-medium-gray: #E0E0E0;
   --lf-dark-gray: #333333;
   --lf-text: #333333;
-
-  /* Typography */
-  --lf-font-headline: 'Nexa Rust Sans Black 2', 'Arial Black', sans-serif;
-  --lf-font-body: 'Nexa Rust Sans Black', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
-  /* Spacing */
-  --lf-radius-sm: 4px;
-  --lf-radius-md: 8px;
-  --lf-radius-lg: 12px;
 }
 
 /* ==========================================================================
-   Chat Container
+   Widget Container
    ========================================================================== */
 
-.vfrc-chat {
-  font-family: var(--lf-font-body);
+.vfrc-widget {
+  font-family: 'Nexa Rust Sans Black', 'Arial Black', Arial, sans-serif !important;
 }
 
 /* ==========================================================================
-   Header & Title
+   Header - CRITICAL: Fix invisible white text
    ========================================================================== */
 
-.vfrc-header,
+.vfrc-header {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #E0E0E0 !important;
+}
+
+.vfrc-header--title {
+  color: #333333 !important;  /* FIXED: Was white on white, now dark */
+  font-family: 'Nexa Rust Sans Black 2', 'Arial Black', Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+
+.vfrc-header--button {
+  color: #333333 !important;
+}
+
+.vfrc-header--icon {
+  fill: #333333 !important;
+  color: #333333 !important;
+}
+
+/* ==========================================================================
+   Assistant Info (Welcome Screen)
+   ========================================================================== */
+
+.vfrc-assistant-info {
+  background-color: transparent !important;
+}
+
 .vfrc-assistant-info--title {
-  font-family: var(--lf-font-headline) !important;
-  background-color: var(--lf-white);
+  color: #333333 !important;
+  font-family: 'Nexa Rust Sans Black 2', 'Arial Black', Arial, sans-serif !important;
+  font-weight: bold !important;
 }
 
-.vfrc-header-title {
-  font-family: var(--lf-font-headline);
-  font-size: 18px;
-  color: var(--lf-dark-gray);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.vfrc-assistant-info--description {
+  color: #666666 !important;
+  font-family: 'Nexa Rust Sans Black', Arial, sans-serif !important;
+}
+
+/* ==========================================================================
+   Chat Dialog - Background Image
+   ========================================================================== */
+
+.vfrc-chat--dialog,
+.vfrc-chat-dialog {
+  background-image: url('https://yannicksegaar.github.io/lastfrontier-voiceflow-styles/images/chatinterface_background.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.vfrc-chat__container,
+.vfrc-chat__container-inner {
+  background-color: transparent !important;
 }
 
 /* ==========================================================================
    Messages
    ========================================================================== */
 
-/* Assistant/System messages */
-.vfrc-message--assistant {
-  background-color: var(--lf-light-gray);
-  color: var(--lf-text);
-  border-radius: var(--lf-radius-md);
+/* System/Assistant messages */
+.vfrc-system-response .vfrc-message,
+.vfrc-system-response--container {
+  font-family: 'Nexa Rust Sans Black', Arial, sans-serif !important;
 }
 
-.vfrc-system-response .vfrc-message {
-  font-family: var(--lf-font-body) !important;
-}
-
-/* User messages */
-.vfrc-message--user {
-  background-color: var(--lf-red);
-  color: var(--lf-white);
-  border-radius: var(--lf-radius-md);
-}
-
+/* User messages - Last Frontier Red */
 .vfrc-user-response .vfrc-message {
-  font-family: var(--lf-font-body) !important;
+  background-color: #cc3333 !important;
+  color: #FFFFFF !important;
+  font-family: 'Nexa Rust Sans Black', Arial, sans-serif !important;
+  border-radius: 8px !important;
 }
 
 /* ==========================================================================
-   Buttons & CTAs
+   Buttons & Actions
    ========================================================================== */
 
 .vfrc-button {
-  background-color: var(--lf-red);
-  color: var(--lf-white);
-  border: none;
-  border-radius: var(--lf-radius-sm);
-  font-family: var(--lf-font-body) !important;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: background-color 0.2s ease;
+  background-color: #cc3333 !important;
+  color: #FFFFFF !important;
+  font-family: 'Nexa Rust Sans Black', Arial, sans-serif !important;
+  border: none !important;
+  border-radius: 4px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
 }
 
 .vfrc-button:hover {
-  background-color: var(--lf-red-hover);
+  background-color: #b32d2d !important;
+}
+
+.vfrc-system-response--action {
+  color: #cc3333 !important;
+  font-family: 'Nexa Rust Sans Black', Arial, sans-serif !important;
 }
 
 /* ==========================================================================
    Input Area
    ========================================================================== */
 
-.vfrc-input,
-.vfrc-input::placeholder {
-  font-family: var(--lf-font-body) !important;
-  border: 1px solid var(--lf-medium-gray);
-  border-radius: var(--lf-radius-md);
+.vfrc-chat-input,
+.vfrc-chat-input__container-inner {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E0E0E0 !important;
+  border-radius: 24px !important;
 }
 
-.vfrc-input:focus {
-  border-color: var(--lf-red);
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(204, 51, 51, 0.2);
+.vfrc-chat-input input,
+.vfrc-chat-input textarea {
+  font-family: 'Nexa Rust Sans Black', Arial, sans-serif !important;
+  color: #333333 !important;
+}
+
+.vfrc-chat-input input::placeholder,
+.vfrc-chat-input textarea::placeholder {
+  color: #999999 !important;
+}
+
+.vfrc-chat-input__send {
+  background-color: #cc3333 !important;
+  color: #FFFFFF !important;
+}
+
+.vfrc-chat-input__send:hover {
+  background-color: #b32d2d !important;
 }
 
 /* ==========================================================================
@@ -147,58 +188,93 @@
    ========================================================================== */
 
 .vfrc-avatar {
-  border-radius: 50%;
-  border: 2px solid var(--lf-red);
+  border: 2px solid #cc3333 !important;
+  border-radius: 50% !important;
 }
 
 /* ==========================================================================
-   Launcher Button (if using widget mode)
+   Launcher Button
    ========================================================================== */
 
 .vfrc-launcher {
-  background-color: var(--lf-red);
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #cc3333 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
 .vfrc-launcher:hover {
-  background-color: var(--lf-red-hover);
-  transform: scale(1.05);
+  background-color: #b32d2d !important;
+  transform: scale(1.05) !important;
+}
+
+.vfrc-launcher__container {
+  background-color: #cc3333 !important;
+}
+
+.vfrc-launcher__label {
+  color: #333333 !important;
+  font-family: 'Nexa Rust Sans Black', Arial, sans-serif !important;
 }
 
 /* ==========================================================================
-   Cards & Carousels
+   Proactive Messages (Popover)
+   ========================================================================== */
+
+.vfrc-proactive {
+  font-family: 'Nexa Rust Sans Black', Arial, sans-serif !important;
+}
+
+.vfrc-proactive__card {
+  background-color: #FFFFFF !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.vfrc-footer {
+  background-color: transparent !important;
+}
+
+.vfrc-footer__start-button {
+  background-color: #cc3333 !important;
+  color: #FFFFFF !important;
+  font-family: 'Nexa Rust Sans Black', Arial, sans-serif !important;
+}
+
+/* ==========================================================================
+   Cards
    ========================================================================== */
 
 .vfrc-card {
-  border-radius: var(--lf-radius-md);
-  border: 1px solid var(--lf-medium-gray);
-  overflow: hidden;
+  border-radius: 8px !important;
+  border: 1px solid #E0E0E0 !important;
+  overflow: hidden !important;
 }
 
 .vfrc-card-title {
-  font-family: var(--lf-font-headline);
-  font-size: 16px;
-  color: var(--lf-dark-gray);
+  font-family: 'Nexa Rust Sans Black 2', 'Arial Black', Arial, sans-serif !important;
+  color: #333333 !important;
 }
 
 /* ==========================================================================
-   Scrollbar Styling
+   Scrollbar
    ========================================================================== */
 
 .vfrc-chat::-webkit-scrollbar {
-  width: 6px;
+  width: 6px !important;
 }
 
 .vfrc-chat::-webkit-scrollbar-track {
-  background: var(--lf-light-gray);
+  background: #F5F5F5 !important;
 }
 
 .vfrc-chat::-webkit-scrollbar-thumb {
-  background: var(--lf-medium-gray);
-  border-radius: 3px;
+  background: #E0E0E0 !important;
+  border-radius: 3px !important;
 }
 
 .vfrc-chat::-webkit-scrollbar-thumb:hover {
-  background: var(--lf-dark-gray);
+  background: #333333 !important;
 }
