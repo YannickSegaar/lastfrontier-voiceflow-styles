@@ -1,0 +1,204 @@
+/**
+ * Last Frontier Heliskiing - Voiceflow Custom Theme
+ *
+ * This stylesheet customizes the Voiceflow chat widget to match
+ * the Last Frontier brand identity.
+ *
+ * Reference: https://github.com/voiceflow/react-chat
+ * Docs: https://docs.voiceflow.com/docs/advanced-styling
+ */
+
+/* ==========================================================================
+   Font Imports
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Nexa Rust Sans Black';
+  src: url('https://yannicksegaar.github.io/lastfrontier-voiceflow-styles/fonts/NexaRustSansBlack.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa Rust Sans Black 2';
+  src: url('https://yannicksegaar.github.io/lastfrontier-voiceflow-styles/fonts/NexaRustSansBlack2.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   CSS Variables (Design Tokens)
+   ========================================================================== */
+
+:root {
+  /* Brand Colors - Official Last Frontier palette */
+  --lf-red: #cc3333;           /* Pantone 485 */
+  --lf-red-hover: #b32d2d;     /* Darker shade for hover states */
+  --lf-black: #000000;
+  --lf-white: #FFFFFF;
+  --lf-light-gray: #F5F5F5;
+  --lf-medium-gray: #E0E0E0;
+  --lf-dark-gray: #333333;
+  --lf-text: #333333;
+
+  /* Typography */
+  --lf-font-headline: 'Nexa Rust Sans Black 2', 'Arial Black', sans-serif;
+  --lf-font-body: 'Nexa Rust Sans Black', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing */
+  --lf-radius-sm: 4px;
+  --lf-radius-md: 8px;
+  --lf-radius-lg: 12px;
+}
+
+/* ==========================================================================
+   Chat Container
+   ========================================================================== */
+
+.vfrc-chat {
+  font-family: var(--lf-font-body);
+}
+
+/* ==========================================================================
+   Header & Title
+   ========================================================================== */
+
+.vfrc-header,
+.vfrc-assistant-info--title {
+  font-family: var(--lf-font-headline) !important;
+  background-color: var(--lf-white);
+}
+
+.vfrc-header-title {
+  font-family: var(--lf-font-headline);
+  font-size: 18px;
+  color: var(--lf-dark-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   Messages
+   ========================================================================== */
+
+/* Assistant/System messages */
+.vfrc-message--assistant {
+  background-color: var(--lf-light-gray);
+  color: var(--lf-text);
+  border-radius: var(--lf-radius-md);
+}
+
+.vfrc-system-response .vfrc-message {
+  font-family: var(--lf-font-body) !important;
+}
+
+/* User messages */
+.vfrc-message--user {
+  background-color: var(--lf-red);
+  color: var(--lf-white);
+  border-radius: var(--lf-radius-md);
+}
+
+.vfrc-user-response .vfrc-message {
+  font-family: var(--lf-font-body) !important;
+}
+
+/* ==========================================================================
+   Buttons & CTAs
+   ========================================================================== */
+
+.vfrc-button {
+  background-color: var(--lf-red);
+  color: var(--lf-white);
+  border: none;
+  border-radius: var(--lf-radius-sm);
+  font-family: var(--lf-font-body) !important;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s ease;
+}
+
+.vfrc-button:hover {
+  background-color: var(--lf-red-hover);
+}
+
+/* ==========================================================================
+   Input Area
+   ========================================================================== */
+
+.vfrc-input,
+.vfrc-input::placeholder {
+  font-family: var(--lf-font-body) !important;
+  border: 1px solid var(--lf-medium-gray);
+  border-radius: var(--lf-radius-md);
+}
+
+.vfrc-input:focus {
+  border-color: var(--lf-red);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(204, 51, 51, 0.2);
+}
+
+/* ==========================================================================
+   Avatar
+   ========================================================================== */
+
+.vfrc-avatar {
+  border-radius: 50%;
+  border: 2px solid var(--lf-red);
+}
+
+/* ==========================================================================
+   Launcher Button (if using widget mode)
+   ========================================================================== */
+
+.vfrc-launcher {
+  background-color: var(--lf-red);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.vfrc-launcher:hover {
+  background-color: var(--lf-red-hover);
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Cards & Carousels
+   ========================================================================== */
+
+.vfrc-card {
+  border-radius: var(--lf-radius-md);
+  border: 1px solid var(--lf-medium-gray);
+  overflow: hidden;
+}
+
+.vfrc-card-title {
+  font-family: var(--lf-font-headline);
+  font-size: 16px;
+  color: var(--lf-dark-gray);
+}
+
+/* ==========================================================================
+   Scrollbar Styling
+   ========================================================================== */
+
+.vfrc-chat::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vfrc-chat::-webkit-scrollbar-track {
+  background: var(--lf-light-gray);
+}
+
+.vfrc-chat::-webkit-scrollbar-thumb {
+  background: var(--lf-medium-gray);
+  border-radius: 3px;
+}
+
+.vfrc-chat::-webkit-scrollbar-thumb:hover {
+  background: var(--lf-dark-gray);
+}
