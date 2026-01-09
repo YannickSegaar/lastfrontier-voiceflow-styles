@@ -77,8 +77,11 @@
 }
 
 /* Ensure chat area is transparent so background shows */
-.vfrc-chat {
+.vfrc-chat,
+[class*="vfrc-chat"]:not(.vfrc-chat-input):not([class*="vfrc-chat-input"]),
+div.vfrc-chat {
   background-color: transparent !important;
+  background: transparent !important;
 }
 
 /* ==========================================================================
