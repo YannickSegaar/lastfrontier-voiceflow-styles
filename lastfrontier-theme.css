@@ -56,32 +56,23 @@
 }
 
 /* ==========================================================================
-   Background Image - Full Coverage
+   Background Image - Applied to .vfrc-chat
    ========================================================================== */
 
-.vfrc-chat__container-inner {
+/* Main chat element gets the background image */
+.vfrc-chat {
   background-image: url('https://yannicksegaar.github.io/lastfrontier-voiceflow-styles/images/chatinterface_background.jpg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
 
-/* Remove white gaps - transparent containers */
-.vfrc-chat__container,
+/* Dialog containers transparent so .vfrc-chat background shows through */
+.vfrc-chat-dialog__container,
 .vfrc-chat--dialog,
-.vfrc-chat-dialog,
-.vfrc-chat-dialog__container {
+.vfrc-chat-dialog {
   background-color: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* Ensure chat area is transparent so background shows */
-.vfrc-chat,
-[class*="vfrc-chat"]:not(.vfrc-chat-input):not([class*="vfrc-chat-input"]),
-div.vfrc-chat {
-  background-color: transparent !important;
-  background: transparent !important;
+  background-image: none !important;
 }
 
 /* ==========================================================================
@@ -159,9 +150,9 @@ div.vfrc-chat {
    ========================================================================== */
 
 .vfrc-footer {
-  background-color: #FFFFFF !important;
+  background-color: transparent !important;
   padding: 8px 12px !important;
-  border-top: 1px solid #E0E0E0 !important;
+  border-top: none !important;
 }
 
 .vfrc-chat-input,
