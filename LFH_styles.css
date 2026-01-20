@@ -1,28 +1,32 @@
-/* Nexa Rust Sans Black font */
-@font-face {
-  font-family: 'Nexa Rust Sans Black';
-  src: url('https://yannicksegaar.github.io/lastfrontier-voiceflow-styles/fonts/NexaRustSansBlack.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+/* ===========================================
+   Last Frontier Voiceflow Styles
+   =========================================== */
 
-/* Apply font to header title */
+/* Apply Nexa Rust Sans Black to header title
+   (font-face is declared in document <head>) */
 .vfrc-header--title,
-.vfrc-assistant-info--title {
+.vfrc-assistant-info--title,
+[class*="vfrc-header"] [class*="title"],
+[class*="assistant-info"] [class*="title"] {
   font-family: 'Nexa Rust Sans Black', sans-serif !important;
 }
 
-/* Background image on chat */
-.vfrc-chat {
+/* Background image on chat area */
+.vfrc-chat,
+[class*="vfrc-chat"] {
   background-image: url('https://yannicksegaar.github.io/lastfrontier-voiceflow-styles/images/LFH_chatinterface_background_map.jpg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
 
-/* Transparent footer */
-.vfrc-footer {
+/* Transparent footer - multiple selectors for CSS-in-JS compatibility */
+.vfrc-footer,
+[class*="vfrc-footer"],
+[class*="Footer"],
+.vfrc-chat > div:last-child,
+[class*="vfrc-chat"] > div:last-child {
   background: transparent !important;
   background-color: transparent !important;
+  background-image: none !important;
 }
