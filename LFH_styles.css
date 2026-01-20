@@ -1,0 +1,28 @@
+/* Nexa Rust Sans Black font */
+@font-face {
+  font-family: 'Nexa Rust Sans Black';
+  src: url('https://yannicksegaar.github.io/lastfrontier-voiceflow-styles/fonts/NexaRustSansBlack.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Apply font to header title */
+.vfrc-header--title,
+.vfrc-assistant-info--title {
+  font-family: 'Nexa Rust Sans Black', sans-serif !important;
+}
+
+/* Background image on chat */
+.vfrc-chat {
+  background-image: url('https://yannicksegaar.github.io/lastfrontier-voiceflow-styles/images/LFH_chatinterface_background_map.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Transparent footer */
+.vfrc-footer {
+  background: transparent !important;
+  background-color: transparent !important;
+}
