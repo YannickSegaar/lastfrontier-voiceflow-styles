@@ -11,22 +11,32 @@
   font-family: 'Nexa Rust Sans Black', sans-serif !important;
 }
 
-/* Background image on chat area */
-.vfrc-chat,
-[class*="vfrc-chat"] {
+/* Background image on main chat container ONLY
+   Use direct class selector to avoid matching child elements */
+.vfrc-chat {
   background-image: url('https://yannicksegaar.github.io/lastfrontier-voiceflow-styles/images/LFH_chatinterface_background_map.jpg') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
 
-/* Transparent footer - multiple selectors for CSS-in-JS compatibility */
+/* Reset background for all inner elements to prevent inheritance issues */
+.vfrc-chat * {
+  background-image: none;
+}
+
+/* Transparent footer */
 .vfrc-footer,
-[class*="vfrc-footer"],
-[class*="Footer"],
-.vfrc-chat > div:last-child,
-[class*="vfrc-chat"] > div:last-child {
+[class*="vfrc-footer"] {
   background: transparent !important;
   background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Fix send button area - ensure clean background */
+.vfrc-footer button,
+.vfrc-footer [class*="button"],
+[class*="vfrc-footer"] button,
+[class*="vfrc-footer"] [class*="button"] {
   background-image: none !important;
 }
