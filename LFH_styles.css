@@ -11,6 +11,13 @@
   font-family: 'Nexa Rust Sans Black 2', sans-serif !important;
 }
 
+/* Apply Nexa Rust Sans Black 2 to launcher widget text */
+.vfrc-launcher,
+.vfrc-launcher * {
+  font-family: 'Nexa Rust Sans Black 2', sans-serif !important;
+}
+
+
 /* Background image on main chat container ONLY
    Use direct class selector to avoid matching child elements */
 .vfrc-chat {
