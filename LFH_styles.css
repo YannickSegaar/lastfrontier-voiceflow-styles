@@ -73,6 +73,28 @@
   background-image: none;
 }
 
+/* Rugged edge pattern on header bottom */
+.vfrc-header {
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 1 !important;
+}
+
+.vfrc-header::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -18px !important;
+  height: 20px !important;
+  background-image: url('https://www.lastfrontierheli.com/wp-content/themes/lastfrontier/dist/images/top-section-pattern.png') !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
+  transform: scaleY(-1) !important;
+}
+
 /* Transparent footer */
 .vfrc-footer,
 [class*="vfrc-footer"] {
