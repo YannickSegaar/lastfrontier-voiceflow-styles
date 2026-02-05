@@ -31,7 +31,12 @@
 .vfrc-header--title {
   color: #FFFFFF !important;
   font-weight: 600 !important;
-  font-size: 13px !important;  /* CHANGED: Reduced from 16px to fit "Last Frontier Heliskiing" */
+  font-size: 12px !important;  /* CHANGED: Reduced from 16px to fit "Last Frontier Heliskiing" */
+  text-overflow: clip !important;  /* ADDED: Prevent ellipsis truncation */
+  overflow: visible !important;    /* ADDED: Allow text to show fully */
+  white-space: nowrap !important;  /* ADDED: Keep on single line */
+  max-width: none !important;      /* ADDED: Remove width constraint */
+  flex-shrink: 0 !important;       /* ADDED: Prevent flex shrinking */
 }
 
 .vfrc-header--button {
