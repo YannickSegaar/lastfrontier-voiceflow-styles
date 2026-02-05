@@ -107,7 +107,7 @@
   z-index: 1 !important;
 }
 
-/* Mountain silhouette texture overlay on header */
+/* Mountain silhouette texture overlay on header - DISABLED FOR NOW
 .vfrc-header::before {
   content: '' !important;
   position: absolute !important;
@@ -124,6 +124,7 @@
   z-index: 1 !important;
   transform: scaleY(-1) !important;
 }
+*/
 
 /* Torn white edge extending below header */
 .vfrc-header::after {
