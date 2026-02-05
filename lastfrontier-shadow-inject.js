@@ -100,13 +100,32 @@
   background-image: none;
 }
 
-/* Rugged edge pattern on header bottom */
+/* Rugged edge pattern - integrated into header */
 .vfrc-header {
   position: relative !important;
   overflow: visible !important;
   z-index: 1 !important;
 }
 
+/* Mountain silhouette texture overlay on header */
+.vfrc-header::before {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 40px !important;
+  background-image: url('https://www.lastfrontierheli.com/wp-content/themes/lastfrontier/dist/images/top-section-black-pattern.png') !important;
+  background-size: 100% 100% !important;
+  background-position: center bottom !important;
+  background-repeat: no-repeat !important;
+  opacity: 0.6 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transform: scaleY(-1) !important;
+}
+
+/* Torn white edge extending below header */
 .vfrc-header::after {
   content: '' !important;
   position: absolute !important;
@@ -120,6 +139,12 @@
   pointer-events: none !important;
   z-index: 10 !important;
   transform: scaleY(-1) !important;
+}
+
+/* Ensure header content stays above overlays */
+.vfrc-header > * {
+  position: relative !important;
+  z-index: 2 !important;
 }
 
 /* Transparent footer */
