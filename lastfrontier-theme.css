@@ -31,18 +31,32 @@
 .vfrc-header--title {
   color: #FFFFFF !important;
   font-weight: 600 !important;
-  font-size: 12px !important;  /* CHANGED: Reduced from 16px to fit "Last Frontier Heliskiing" */
-  text-overflow: clip !important;  /* ADDED: Prevent ellipsis truncation */
-  overflow: visible !important;    /* ADDED: Allow text to show fully */
-  white-space: nowrap !important;  /* ADDED: Keep on single line */
-  max-width: none !important;      /* ADDED: Remove width constraint */
-  flex-shrink: 0 !important;       /* ADDED: Prevent flex shrinking */
+  font-size: 11px !important;  /* CHANGED: Reduced to 11px to fit "Last Frontier Heliskiing" */
+  text-overflow: clip !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+  max-width: unset !important;
+  flex: 1 1 auto !important;       /* CHANGED: Allow title to grow */
+  min-width: 0 !important;
 }
 
+/* ADDED: Shrink header buttons to give more space to title */
 .vfrc-header--button {
   background-color: rgba(255, 255, 255, 0.2) !important;
   color: #FFFFFF !important;
   border-radius: 4px !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  padding: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+/* ADDED: Reduce header button container spacing */
+.vfrc-header--actions,
+[class*="header"] [class*="actions"] {
+  gap: 4px !important;
+  flex-shrink: 0 !important;
 }
 
 .vfrc-header--button:hover {
@@ -58,6 +72,15 @@
 .vfrc-header img,
 .vfrc-header .vfrc-icon {
   border-radius: 50% !important;
+}
+
+/* ADDED: Expand title container to use available space */
+.vfrc-header--title-container,
+[class*="header"] [class*="title-container"],
+.vfrc-header > div:nth-child(2) {
+  flex: 1 1 auto !important;
+  max-width: none !important;
+  overflow: visible !important;
 }
 
 /* ==========================================================================
