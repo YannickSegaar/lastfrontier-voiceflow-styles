@@ -12,11 +12,7 @@
  *   - voiceflow:interact  agent responded
  */
 (function () {
-  // --- Generate a short beep as a data URL ---
-  // 880Hz sine wave, 200ms, with 10ms fade in/out. No external file dependency.
-  // To use a custom sound instead, replace beepAudio with:
-  //   var beepAudio = new Audio('https://yannicksegaar.github.io/.../notification.mp3');
-  var beepAudio = new Audio(generateBeepDataURL());
+  var beepAudio = new Audio('https://yannicksegaar.github.io/lastfrontier-voiceflow-styles/lfh_notification_beep.mp3');
 
   var widgetOpen = false;
   var tabVisible = document.visibilityState === 'visible';
@@ -65,59 +61,4 @@
         break;
     }
   }, false);
-
-  /**
-   * Generates a short 880Hz sine wave beep as a data:audio/wav URL.
-   * Duration: 200ms, Sample rate: 44100Hz, 16-bit mono, ~17KB.
-   */
-  function generateBeepDataURL() {
-    var sampleRate = 44100;
-    var duration = 0.2;
-    var frequency = 880;
-    var volume = 0.3;
-    var numSamples = Math.floor(sampleRate * duration);
-    var fadeLen = Math.floor(sampleRate * 0.01);
-
-    var bufferSize = 44 + numSamples * 2;
-    var buffer = new ArrayBuffer(bufferSize);
-    var view = new DataView(buffer);
-
-    // WAV header
-    writeString(view, 0, 'RIFF');
-    view.setUint32(4, bufferSize - 8, true);
-    writeString(view, 8, 'WAVE');
-    writeString(view, 12, 'fmt ');
-    view.setUint32(16, 16, true);
-    view.setUint16(20, 1, true);
-    view.setUint16(22, 1, true);
-    view.setUint32(24, sampleRate, true);
-    view.setUint32(28, sampleRate * 2, true);
-    view.setUint16(32, 2, true);
-    view.setUint16(34, 16, true);
-    writeString(view, 36, 'data');
-    view.setUint32(40, numSamples * 2, true);
-
-    // Sine wave with fade in/out to avoid click artifacts
-    for (var i = 0; i < numSamples; i++) {
-      var t = i / sampleRate;
-      var sample = Math.sin(2 * Math.PI * frequency * t) * volume;
-      if (i < fadeLen) sample *= i / fadeLen;
-      if (i > numSamples - fadeLen) sample *= (numSamples - i) / fadeLen;
-      view.setInt16(44 + i * 2, Math.max(-1, Math.min(1, sample)) * 0x7FFF, true);
-    }
-
-    // Convert ArrayBuffer to base64 data URL
-    var bytes = new Uint8Array(buffer);
-    var binary = '';
-    for (var j = 0; j < bytes.length; j++) {
-      binary += String.fromCharCode(bytes[j]);
-    }
-    return 'data:audio/wav;base64,' + btoa(binary);
-  }
-
-  function writeString(view, offset, str) {
-    for (var i = 0; i < str.length; i++) {
-      view.setUint8(offset + i, str.charCodeAt(i));
-    }
-  }
 })();
