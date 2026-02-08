@@ -110,3 +110,14 @@
 [class*="vfrc-footer"] [class*="button"] {
   background-image: none !important;
 }
+
+/* Notification-style proactive message bubble */
+.vfrc-proactive-message {
+  background-color: #e62b1e !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+  box-shadow: 0 2px 8px rgba(230, 43, 30, 0.3) !important;
+}
