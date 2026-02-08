@@ -163,6 +163,24 @@
 [class*="vfrc-footer"] [class*="button"] {
   background-image: none !important;
 }
+
+/* Notification-style proactive messages (red pill badges) */
+.vfrc-proactive__card {
+  background-color: #e62b1e !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+  box-shadow: 0 2px 8px rgba(230, 43, 30, 0.3) !important;
+}
+
+/* White close button to match red background */
+.vfrc-proactive__close-button {
+  color: #FFFFFF !important;
+  background-color: rgba(230, 43, 30, 0.8) !important;
+  border-radius: 50% !important;
+}
     `;
 
     shadowRoot.appendChild(style);
