@@ -181,9 +181,142 @@
   background-color: rgba(230, 43, 30, 0.8) !important;
   border-radius: 50% !important;
 }
+
+/* === Help tooltip below header (assistant info area) === */
+.lf-help-tooltip {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  position: relative;
+}
+
+.lf-help-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(180deg, #ee2e24, #CC3333);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Nexa Rust Sans Black 2', system-ui, sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+  transition: filter 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 6px rgba(204, 51, 51, 0.3);
+}
+
+.lf-help-circle:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 3px 10px rgba(204, 51, 51, 0.45);
+}
+
+.lf-help-balloon {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  width: 220px;
+  background: #F5F5F5;
+  color: #42494e;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  pointer-events: none;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.6;
+  z-index: 100;
+  text-align: left;
+}
+
+.lf-help-balloon::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  margin-left: -6px;
+  width: 11px;
+  height: 11px;
+  background: #F5F5F5;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  transform: rotate(45deg);
+}
+
+.lf-help-tooltip:hover .lf-help-balloon {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.lf-help-balloon strong {
+  display: block;
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e0e0e0;
+  font-family: 'Nexa Rust Sans Black 2', system-ui, sans-serif;
+  font-size: 12px;
+  color: #CC3333;
+  letter-spacing: 0.3px;
+}
+
+.lf-help-balloon ul {
+  margin: 0;
+  padding: 0 0 0 16px;
+  list-style: none;
+}
+
+.lf-help-balloon li {
+  margin-bottom: 4px;
+  color: #42494e;
+  padding-left: 2px;
+}
+
+.lf-help-balloon li::before {
+  content: '\\2022';
+  color: #CC3333;
+  font-weight: 700;
+  display: inline-block;
+  width: 14px;
+  margin-left: -14px;
+}
     `;
 
     shadowRoot.appendChild(style);
+
+    // Inject help tooltip below header (assistant info area)
+    if (!shadowRoot.querySelector('.lf-help-tooltip')) {
+      const assistantInfo = shadowRoot.querySelector('.vfrc-assistant-info') || shadowRoot.querySelector('[class*="assistant-info"]');
+      if (assistantInfo) {
+        const wrap = document.createElement('div');
+        wrap.className = 'lf-help-tooltip';
+        wrap.innerHTML = `
+          <button class="lf-help-circle" aria-label="Help" type="button">?</button>
+          <div class="lf-help-balloon">
+            <strong>I can help with:</strong>
+            <ul>
+              <li>Tours &amp; pricing</li>
+              <li>Our two lodges</li>
+              <li>Safety &amp; equipment</li>
+              <li>Getting here</li>
+              <li>Booking questions</li>
+            </ul>
+          </div>
+        `;
+        assistantInfo.appendChild(wrap);
+      }
+    }
+
     console.log('✅ Last Frontier custom styles injected into Shadow DOM');
   };
 
